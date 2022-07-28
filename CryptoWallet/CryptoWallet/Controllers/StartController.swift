@@ -16,6 +16,7 @@ final class StartController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createCustomNavigationBar()
         setUpView()
         self.hideKeyboard()
     }
@@ -83,8 +84,8 @@ final class StartController: UIViewController {
         let walletController = WalletController()
         walletController.modalPresentationStyle = .fullScreen
         
-        if firstTextField.text == "a" && secondTextField.text == "0" {
-            present(walletController, animated: true, completion: nil)
+        if firstTextField.text == "A" && secondTextField.text == "0" {
+            navigationController?.pushViewController(walletController, animated: true)
         } else {
             let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .actionSheet)
             

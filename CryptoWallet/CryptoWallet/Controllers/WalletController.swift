@@ -43,7 +43,9 @@ final class WalletController: UIViewController {
     }
     
     @objc private func logOutButtonTapped() {
-        print("LogOut")
+        let startController = StartController()
+        startController.modalPresentationStyle = .fullScreen
+        present(startController, animated: true, completion: nil)
     }
 }
 
