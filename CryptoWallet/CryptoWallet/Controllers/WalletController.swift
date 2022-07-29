@@ -15,9 +15,15 @@ final class WalletController: UIViewController {
     private let data = City.getCityList()
     private let identifier = "walletCell"
     
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     // MARK: setUpView
@@ -44,8 +50,7 @@ final class WalletController: UIViewController {
     
     @objc private func logOutButtonTapped() {
         let startController = StartController()
-        startController.modalPresentationStyle = .fullScreen
-        present(startController, animated: true, completion: nil)
+        navigationController?.pushViewController(startController, animated: true)
     }
 }
 

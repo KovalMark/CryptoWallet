@@ -11,18 +11,28 @@ import SnapKit
 // MARK: StartController
 final class StartController: UIViewController {
     
+    private let defaults = UserDefaults.standard
     private let firstTextField = TextFieldView()
     private let secondTextField = TextFieldView()
+    private let login = "admin"
+    private let password = "0000"
     
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        createCustomNavigationBar()
         setUpView()
         self.hideKeyboard()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     // MARK: setUpView
     private func setUpView() {
+        
+        // NavigationBar
+        createCustomNavigationBar()
         
         // ScrollView
         let scroll = UIScrollView()
@@ -44,8 +54,8 @@ final class StartController: UIViewController {
         }
         
         // FirstTextField
-        let firstTextField = firstTextField
         firstTextField.keyboardType = .default
+        firstTextField.placeholder = "Login"
         scroll.addSubview(firstTextField)
         firstTextField.snp.makeConstraints { maker in
             maker.centerX.equalTo(scroll)
@@ -54,8 +64,8 @@ final class StartController: UIViewController {
         }
         
         // SecondTextField
-        let secondTextField = secondTextField
         secondTextField.keyboardType = .numberPad
+        secondTextField.placeholder = "Password"
         secondTextField.isSecureTextEntry = true
         scroll.addSubview(secondTextField)
         secondTextField.snp.makeConstraints { maker in
@@ -82,9 +92,10 @@ final class StartController: UIViewController {
     
     @objc private func tapButton() {
         let walletController = WalletController()
-        walletController.modalPresentationStyle = .fullScreen
         
-        if firstTextField.text == "A" && secondTextField.text == "0" {
+        if firstTextField.text == login && secondTextField.text == password {
+            defaults.set(firstTextField.text, forKey: "login")
+            defaults.set(secondTextField.text, forKey: "password")
             navigationController?.pushViewController(walletController, animated: true)
         } else {
             let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .actionSheet)
