@@ -17,6 +17,7 @@
 		BFCB7E0C288D5CB0003A552C /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCB7E0B288D5CB0003A552C /* StartController.swift */; };
 		BFCB7E0F288D5DC7003A552C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BFCB7E0E288D5DC7003A552C /* SnapKit */; };
 		BFCB7E12288D6518003A552C /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCB7E11288D6518003A552C /* TextFieldView.swift */; };
+		BFFDDDCF2897AA3F00B32B8B /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFDDDCE2897AA3F00B32B8B /* InfoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		BFCB7E04288D5C46003A552C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFCB7E0B288D5CB0003A552C /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		BFCB7E11288D6518003A552C /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		BFFDDDCE2897AA3F00B32B8B /* InfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +74,12 @@
 		BFCB7DF5288D5C45003A552C /* CryptoWallet */ = {
 			isa = PBXGroup;
 			children = (
+				BFFDDDCD2897AA0900B32B8B /* Models */,
+				BFCB7E10288D64F7003A552C /* Views */,
 				BFCB7E13288D6537003A552C /* Controllers */,
-				BFCB7E10288D64F7003A552C /* View's */,
 				BFA6AD93288D704100A4B609 /* Extension */,
 				BFCB7E0A288D5C85003A552C /* Resourse */,
 				BFCB7E04288D5C46003A552C /* Info.plist */,
-				BFA6AD98288D9B2F00A4B609 /* CityModel.swift */,
 			);
 			path = CryptoWallet;
 			sourceTree = "<group>";
@@ -93,12 +95,12 @@
 			path = Resourse;
 			sourceTree = "<group>";
 		};
-		BFCB7E10288D64F7003A552C /* View's */ = {
+		BFCB7E10288D64F7003A552C /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				BFCB7E11288D6518003A552C /* TextFieldView.swift */,
 			);
-			path = "View's";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BFCB7E13288D6537003A552C /* Controllers */ = {
@@ -106,8 +108,17 @@
 			children = (
 				BFCB7E0B288D5CB0003A552C /* StartController.swift */,
 				BFA6AD96288D82E600A4B609 /* WalletController.swift */,
+				BFFDDDCE2897AA3F00B32B8B /* InfoController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BFFDDDCD2897AA0900B32B8B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFA6AD98288D9B2F00A4B609 /* CityModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 				BFCB7E12288D6518003A552C /* TextFieldView.swift in Sources */,
 				BFCB7E0C288D5CB0003A552C /* StartController.swift in Sources */,
 				BFA6AD99288D9B2F00A4B609 /* CityModel.swift in Sources */,
+				BFFDDDCF2897AA3F00B32B8B /* InfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

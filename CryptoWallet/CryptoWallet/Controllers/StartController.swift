@@ -99,7 +99,6 @@ final class StartController: UIViewController {
             navigationController?.pushViewController(walletController, animated: true)
         } else {
             let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .actionSheet)
-            
             let buttonAction = UIAlertAction(title: "Ok", style: .default) { _ in
                 self.firstTextField.text?.removeAll()
                 self.secondTextField.text?.removeAll()
