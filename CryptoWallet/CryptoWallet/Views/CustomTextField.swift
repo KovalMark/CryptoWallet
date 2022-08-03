@@ -8,7 +8,7 @@
 import UIKit
 
 //MARK: TextFieldView
-final class TextFieldView: UITextField, UITextFieldDelegate {
+final class CustomTextField: UITextField, UITextFieldDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

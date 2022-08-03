@@ -16,7 +16,8 @@
 		BFCB7E03288D5C46003A552C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCB7E01288D5C46003A552C /* LaunchScreen.storyboard */; };
 		BFCB7E0C288D5CB0003A552C /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCB7E0B288D5CB0003A552C /* StartController.swift */; };
 		BFCB7E0F288D5DC7003A552C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BFCB7E0E288D5DC7003A552C /* SnapKit */; };
-		BFCB7E12288D6518003A552C /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCB7E11288D6518003A552C /* TextFieldView.swift */; };
+		BFCB7E12288D6518003A552C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCB7E11288D6518003A552C /* CustomTextField.swift */; };
+		BFD44DEF2899424F00D89A5A /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD44DEE2899424F00D89A5A /* CustomLabel.swift */; };
 		BFFDDDCF2897AA3F00B32B8B /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFDDDCE2897AA3F00B32B8B /* InfoController.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +32,8 @@
 		BFCB7E02288D5C46003A552C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFCB7E04288D5C46003A552C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFCB7E0B288D5CB0003A552C /* StartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
-		BFCB7E11288D6518003A552C /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		BFCB7E11288D6518003A552C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		BFD44DEE2899424F00D89A5A /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		BFFDDDCE2897AA3F00B32B8B /* InfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +100,8 @@
 		BFCB7E10288D64F7003A552C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BFCB7E11288D6518003A552C /* TextFieldView.swift */,
+				BFCB7E11288D6518003A552C /* CustomTextField.swift */,
+				BFD44DEE2899424F00D89A5A /* CustomLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,10 +201,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFA6AD97288D82E600A4B609 /* WalletController.swift in Sources */,
+				BFD44DEF2899424F00D89A5A /* CustomLabel.swift in Sources */,
 				BFA6AD95288D705E00A4B609 /* extension+UIViewController.swift in Sources */,
 				BFCB7DF7288D5C45003A552C /* AppDelegate.swift in Sources */,
 				BFCB7DF9288D5C45003A552C /* SceneDelegate.swift in Sources */,
-				BFCB7E12288D6518003A552C /* TextFieldView.swift in Sources */,
+				BFCB7E12288D6518003A552C /* CustomTextField.swift in Sources */,
 				BFCB7E0C288D5CB0003A552C /* StartController.swift in Sources */,
 				BFA6AD99288D9B2F00A4B609 /* CityModel.swift in Sources */,
 				BFFDDDCF2897AA3F00B32B8B /* InfoController.swift in Sources */,
