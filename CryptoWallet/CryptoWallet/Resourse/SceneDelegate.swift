@@ -12,21 +12,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
-        // 1. Захват сцены
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
-        // 2. Создание UIWindow с использованием конструктора, который принимает сцену
+        
         let window = UIWindow(windowScene: windowScene)
-
-        // 3. Программно создаем основной контроллер и интегрируем в него navigationController
         let viewController = StartController()
         let navigationController = UINavigationController(rootViewController: viewController)
-
-        // 4. Определяем NavigationController как rootViewController
+        
         window.rootViewController = navigationController
-
-        // 5. Настройка window
         self.window = window
         window.makeKeyAndVisible()
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: Extension
 extension UIViewController {
    
     //MARK: Keyboard
@@ -22,7 +23,7 @@ extension UIViewController {
     //MARK: Navigation Bar
     func createCustomNavigationBar() {
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9381344914, green: 0.9331676364, blue: 0.9246369004, alpha: 1)
-        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.4355629981, green: 0.5685014725, blue: 0.7107543349, alpha: 1)
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.navigationItem.title = ""
     }
     

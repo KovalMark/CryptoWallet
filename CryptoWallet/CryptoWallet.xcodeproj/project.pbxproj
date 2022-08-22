@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		BFA6AD95288D705E00A4B609 /* extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6AD94288D705E00A4B609 /* extension+UIViewController.swift */; };
 		BFA6AD97288D82E600A4B609 /* WalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6AD96288D82E600A4B609 /* WalletController.swift */; };
-		BFA6AD99288D9B2F00A4B609 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6AD98288D9B2F00A4B609 /* CityModel.swift */; };
+		BFBBA96628B2309600EE37B4 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBBA96528B2309600EE37B4 /* WalletModel.swift */; };
+		BFBBA96828B2341300EE37B4 /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBBA96728B2341300EE37B4 /* WalletService.swift */; };
 		BFCB7DF7288D5C45003A552C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCB7DF6288D5C45003A552C /* AppDelegate.swift */; };
 		BFCB7DF9288D5C45003A552C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCB7DF8288D5C45003A552C /* SceneDelegate.swift */; };
 		BFCB7E00288D5C46003A552C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCB7DFF288D5C46003A552C /* Assets.xcassets */; };
@@ -24,7 +25,8 @@
 /* Begin PBXFileReference section */
 		BFA6AD94288D705E00A4B609 /* extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension+UIViewController.swift"; sourceTree = "<group>"; };
 		BFA6AD96288D82E600A4B609 /* WalletController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletController.swift; sourceTree = "<group>"; };
-		BFA6AD98288D9B2F00A4B609 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		BFBBA96528B2309600EE37B4 /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
+		BFBBA96728B2341300EE37B4 /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
 		BFCB7DF3288D5C45003A552C /* CryptoWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCB7DF6288D5C45003A552C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCB7DF8288D5C45003A552C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF1F127528AF963800A3E7AD /* Service Layer */ = {
+			isa = PBXGroup;
+			children = (
+				BFBBA96728B2341300EE37B4 /* WalletService.swift */,
+			);
+			path = "Service Layer";
+			sourceTree = "<group>";
+		};
 		BFA6AD93288D704100A4B609 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +89,7 @@
 				BFFDDDCD2897AA0900B32B8B /* Models */,
 				BFCB7E10288D64F7003A552C /* Views */,
 				BFCB7E13288D6537003A552C /* Controllers */,
+				BF1F127528AF963800A3E7AD /* Service Layer */,
 				BFA6AD93288D704100A4B609 /* Extension */,
 				BFCB7E0A288D5C85003A552C /* Resourse */,
 				BFCB7E04288D5C46003A552C /* Info.plist */,
@@ -119,7 +130,7 @@
 		BFFDDDCD2897AA0900B32B8B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BFA6AD98288D9B2F00A4B609 /* CityModel.swift */,
+				BFBBA96528B2309600EE37B4 /* WalletModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,14 +211,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFBBA96628B2309600EE37B4 /* WalletModel.swift in Sources */,
 				BFA6AD97288D82E600A4B609 /* WalletController.swift in Sources */,
 				BFD44DEF2899424F00D89A5A /* CustomLabel.swift in Sources */,
 				BFA6AD95288D705E00A4B609 /* extension+UIViewController.swift in Sources */,
 				BFCB7DF7288D5C45003A552C /* AppDelegate.swift in Sources */,
+				BFBBA96828B2341300EE37B4 /* WalletService.swift in Sources */,
 				BFCB7DF9288D5C45003A552C /* SceneDelegate.swift in Sources */,
 				BFCB7E12288D6518003A552C /* CustomTextField.swift in Sources */,
 				BFCB7E0C288D5CB0003A552C /* StartController.swift in Sources */,
-				BFA6AD99288D9B2F00A4B609 /* CityModel.swift in Sources */,
 				BFFDDDCF2897AA3F00B32B8B /* InfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

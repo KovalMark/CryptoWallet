@@ -12,13 +12,17 @@ import SnapKit
 final class WalletController: UIViewController {
     
     private let walletTable = UITableView()
-    private let data = City.getCityList()
+    private let service = WalletService()
+    private var data: [DataWallet] = []
     private let identifier = "walletCell"
+    private var pointSorted = 1
+    private let queue = DispatchQueue.main
     
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+        configData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,9 +36,13 @@ final class WalletController: UIViewController {
         // NavigationBar
         createCustomNavigationBar()
         
-        // BarButton
+        // LogOutBarButton
         let logOutButton = createCustomButton(titleName: "LogOut", selector: #selector(logOutButtonTapped))
-        navigationItem.rightBarButtonItem = logOutButton
+        navigationItem.leftBarButtonItem = logOutButton
+        
+        // SortedBarButton
+        let sortedButton = createCustomButton(titleName: "Sorted", selector: #selector(sortedButtonTapped))
+        navigationItem.rightBarButtonItem = sortedButton
         
         // TableView
         walletTable.backgroundColor = #colorLiteral(red: 0.9381344914, green: 0.9331676364, blue: 0.9246369004, alpha: 1)
@@ -51,6 +59,31 @@ final class WalletController: UIViewController {
     @objc private func logOutButtonTapped() {
         let startController = StartController()
         navigationController?.pushViewController(startController, animated: true)
+    }
+    
+    private func configData() {
+        service.addCoin { [weak self] result in
+            switch result {
+            case .success(let dataBoy):
+                self?.data = [dataBoy]
+                DispatchQueue.main.async {
+                    self?.walletTable.reloadData()
+                }
+            case.failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    @objc private func sortedButtonTapped() {
+        //        if pointSorted == 1 {
+        //            data = data.sorted{ $0.capital < $1.capital }
+        //            pointSorted = pointSorted - 1
+        //        } else {
+        //            data = data.sorted{ $0.country < $1.country }
+        //            pointSorted = pointSorted + 1
+        //        }
+        //        walletTable.reloadData()
     }
 }
 
@@ -72,14 +105,32 @@ extension WalletController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = walletTable.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         cell.backgroundColor = #colorLiteral(red: 0.9381344914, green: 0.9331676364, blue: 0.9246369004, alpha: 1)
-        let city = data[indexPath.row]
+        let coin = data[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
-        content.text = city.capital
-        content.secondaryText = city.country
+        content.text = coin.name
+        content.secondaryText = coin.symbol
         
         cell.contentConfiguration = content
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let coin = data[indexPath.row]
+        let infoController = InfoController()
+        
+        queue.async {
+            infoController.firstTextLabel.text = coin.name
+            infoController.firstNumberLabel.text = coin.symbol
+            
+            infoController.secondTextLabel.text = coin.name
+            infoController.secondNumberLabel.text = String(coin.market_data.price_btc)
+            
+            infoController.thirdTextLabel.text = coin.name
+            infoController.thirdNumberLabel.text = String(coin.market_data.price_usd)
+        }
+        
+        navigationController?.pushViewController(infoController, animated: true)
     }
 }

@@ -11,12 +11,12 @@ import SnapKit
 // MARK: InfoController
 final class InfoController: UIViewController {
     
-    private let firstTextLabel = CustomLabel()
-    private let firstNumberLabel = CustomLabel()
-    private let secondTextLabel = CustomLabel()
-    private let secondNumberLabel = CustomLabel()
-    private let thirdTextLabel = CustomLabel()
-    private let thirdNumberLabel = CustomLabel()
+     let firstTextLabel = CustomLabel()
+     let firstNumberLabel = CustomLabel()
+     let secondTextLabel = CustomLabel()
+     let secondNumberLabel = CustomLabel()
+     let thirdTextLabel = CustomLabel()
+     let thirdNumberLabel = CustomLabel()
     
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ final class InfoController: UIViewController {
     }
     
     // MARK: setUpView
-    private func setUpView() {
+     func setUpView() {
         
         // NavigationBar
         createCustomNavigationBar()
@@ -51,7 +51,7 @@ final class InfoController: UIViewController {
         }
         
         // FirstNumberLabel
-        firstNumberLabel.text = "0382849"
+        firstNumberLabel.text = "0"
         scroll.addSubview(firstNumberLabel)
         firstNumberLabel.snp.makeConstraints { maker in
             maker.centerX.equalTo(scroll)
@@ -67,7 +67,7 @@ final class InfoController: UIViewController {
         }
         
         // SecondNumberLabel
-        secondNumberLabel.text = "8489933"
+        secondNumberLabel.text = "1"
         scroll.addSubview(secondNumberLabel)
         secondNumberLabel.snp.makeConstraints { maker in
             maker.centerX.equalTo(scroll)
@@ -83,7 +83,7 @@ final class InfoController: UIViewController {
         }
         
         // ThirdNumberLabel
-        thirdNumberLabel.text = "492847"
+        thirdNumberLabel.text = "2"
         scroll.addSubview(thirdNumberLabel)
         thirdNumberLabel.snp.makeConstraints { maker in
             maker.centerX.equalTo(scroll)

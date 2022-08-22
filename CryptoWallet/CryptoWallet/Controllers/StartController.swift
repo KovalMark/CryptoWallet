@@ -22,6 +22,7 @@ final class StartController: UIViewController {
         super.viewDidLoad()
         setUpView()
         self.hideKeyboard()
+        saveEnter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,8 +95,8 @@ final class StartController: UIViewController {
         let walletController = WalletController()
         
         if firstTextField.text == login && secondTextField.text == password {
-            defaults.set(firstTextField.text, forKey: "login")
-            defaults.set(secondTextField.text, forKey: "password")
+            defaults.setValue(firstTextField.text, forKey: "login")
+            defaults.setValue(secondTextField.text, forKey: "password")
             navigationController?.pushViewController(walletController, animated: true)
         } else {
             let alert = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .actionSheet)
@@ -106,5 +107,10 @@ final class StartController: UIViewController {
             alert.addAction(buttonAction)
             present(alert, animated: true, completion: nil)
         }
+    }
+    
+    private func saveEnter() {
+        firstTextField.text = defaults.string(forKey: "login")
+        secondTextField.text = defaults.string(forKey: "password")
     }
 }
