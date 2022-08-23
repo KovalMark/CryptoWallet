@@ -108,8 +108,8 @@ extension WalletController: UITableViewDataSource {
         let coin = data[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
-        content.text = coin.name
-        content.secondaryText = coin.symbol
+        content.text = coin.symbol
+        content.secondaryText = String(coin.market_data.percent_change_usd_last_1_hour ?? 0.0)
         
         cell.contentConfiguration = content
         
@@ -125,10 +125,10 @@ extension WalletController: UITableViewDataSource {
             infoController.firstNumberLabel.text = coin.symbol
             
             infoController.secondTextLabel.text = coin.name
-            infoController.secondNumberLabel.text = String(coin.market_data.price_btc)
+            infoController.secondNumberLabel.text = String(coin.market_data.price_btc ?? 0.0)
             
             infoController.thirdTextLabel.text = coin.name
-            infoController.thirdNumberLabel.text = String(coin.market_data.price_usd)
+            infoController.thirdNumberLabel.text = String(coin.market_data.price_usd ?? 0.0)
         }
         
         navigationController?.pushViewController(infoController, animated: true)

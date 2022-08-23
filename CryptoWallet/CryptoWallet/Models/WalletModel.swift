@@ -25,8 +25,8 @@ struct DataWallet: Codable {
 }
 
 struct MarketData: Codable {
-    let price_usd: Double
-    let price_btc: Double
+    let price_usd: Double?
+    let price_btc: Double?
     let percent_change_usd_last_1_hour: Double?
     let percent_change_btc_last_1_hour: Double?
 }

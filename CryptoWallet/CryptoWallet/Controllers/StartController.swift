@@ -12,8 +12,8 @@ import SnapKit
 final class StartController: UIViewController {
     
     private let defaults = UserDefaults.standard
-    private let firstTextField = CustomTextField()
-    private let secondTextField = CustomTextField()
+    let firstTextField = CustomTextField()
+    let secondTextField = CustomTextField()
     private let login = "admin"
     private let password = "0000"
     
