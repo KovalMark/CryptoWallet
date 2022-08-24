@@ -112,8 +112,17 @@ final class StartController: UIViewController {
     
     // MARK: UserDefaults
     private func saveDefaults() {
-        firstTextField.text = defaults.string(forKey: "login")
-        secondTextField.text = defaults.string(forKey: "password")
+        let login = defaults.string(forKey: "login")
+        let password = defaults.string(forKey: "password")
+        
+        firstTextField.text = login
+        secondTextField.text = password
+        
+        guard
+            firstTextField.text == login,
+            secondTextField.text == password,
+            ((navigationController?.pushViewController(walletController, animated: true)) != nil)
+        else { return }
     }
     
     func resetDefaults() {
