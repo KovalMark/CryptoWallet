@@ -24,9 +24,7 @@ struct DataWallet: Codable {
     let marketData: MarketData
     
     enum CodingKeys: String, CodingKey {
-        case id
-        case symbol
-        case name
+        case id, symbol, name
         case marketData = "market_data"
     }
 }
