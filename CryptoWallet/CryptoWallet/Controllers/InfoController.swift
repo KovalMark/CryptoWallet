@@ -11,12 +11,12 @@ import SnapKit
 // MARK: InfoController
 final class InfoController: UIViewController {
     
-     let firstTextLabel = CustomLabel()
-     let firstNumberLabel = CustomLabel()
-     let secondTextLabel = CustomLabel()
-     let secondNumberLabel = CustomLabel()
-     let thirdTextLabel = CustomLabel()
-     let thirdNumberLabel = CustomLabel()
+    let firstTextLabel = CustomLabel()
+    let firstNumberLabel = CustomLabel()
+    let secondTextLabel = CustomLabel()
+    let secondNumberLabel = CustomLabel()
+    let thirdTextLabel = CustomLabel()
+    let thirdNumberLabel = CustomLabel()
     
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ final class InfoController: UIViewController {
     }
     
     // MARK: setUpView
-     func setUpView() {
+    func setUpView() {
         
         // NavigationBar
         createCustomNavigationBar()

@@ -62,13 +62,14 @@ final class WalletController: UIViewController {
     }
     
     private func configData() {
+        data = []
         service.addCoin { [weak self] result in
             switch result {
             case .success(let dataBoy):
-                self?.data = [dataBoy]
-                DispatchQueue.main.async {
+                self?.data.append(dataBoy)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     self?.walletTable.reloadData()
-                }
+                })
             case.failure(let error):
                 print(error)
             }
@@ -76,14 +77,14 @@ final class WalletController: UIViewController {
     }
     
     @objc private func sortedButtonTapped() {
-        //        if pointSorted == 1 {
-        //            data = data.sorted{ $0.capital < $1.capital }
-        //            pointSorted = pointSorted - 1
-        //        } else {
-        //            data = data.sorted{ $0.country < $1.country }
-        //            pointSorted = pointSorted + 1
-        //        }
-        //        walletTable.reloadData()
+        if pointSorted == 1 {
+            data = data.sorted{ $0.marketData.changeUsdLastHour ?? 0 < $1.marketData.changeUsdLastHour ?? 0 }
+            pointSorted = pointSorted - 1
+        } else {
+            data = data.sorted{ $1.marketData.changeUsdLastHour ?? 0 < $0.marketData.changeUsdLastHour ?? 0 }
+            pointSorted = pointSorted + 1
+        }
+        walletTable.reloadData()
     }
 }
 
@@ -109,8 +110,7 @@ extension WalletController: UITableViewDataSource {
         
         var content = cell.defaultContentConfiguration()
         content.text = coin.symbol
-        content.secondaryText = String(coin.market_data.percent_change_usd_last_1_hour ?? 0.0)
-        
+        content.secondaryText = String(coin.marketData.changeUsdLastHour ?? 0.0)
         cell.contentConfiguration = content
         
         return cell
@@ -124,11 +124,11 @@ extension WalletController: UITableViewDataSource {
             infoController.firstTextLabel.text = coin.name
             infoController.firstNumberLabel.text = coin.symbol
             
-            infoController.secondTextLabel.text = coin.name
-            infoController.secondNumberLabel.text = String(coin.market_data.price_btc ?? 0.0)
+            infoController.secondTextLabel.text = "Price usd \(String(coin.marketData.priceUsd ?? 0.0))"
+            infoController.secondNumberLabel.text = "Price btc \(String(coin.marketData.priceBtc ?? 0.0))"
             
-            infoController.thirdTextLabel.text = coin.name
-            infoController.thirdNumberLabel.text = String(coin.market_data.price_usd ?? 0.0)
+            infoController.thirdTextLabel.text = "Change usd last hour \(String(coin.marketData.changeUsdLastHour ?? 0.0))"
+            infoController.thirdNumberLabel.text = "Change btc last hour \(String(coin.marketData.changeBtcLastHour ?? 0.0))"
         }
         
         navigationController?.pushViewController(infoController, animated: true)

@@ -11,9 +11,10 @@ import SnapKit
 // MARK: StartController
 final class StartController: UIViewController {
     
+    private let walletController = WalletController()
     private let defaults = UserDefaults.standard
-    let firstTextField = CustomTextField()
-    let secondTextField = CustomTextField()
+    private let firstTextField = CustomTextField()
+    private let secondTextField = CustomTextField()
     private let login = "admin"
     private let password = "0000"
     
