@@ -23,7 +23,7 @@ final class StartController: UIViewController {
         super.viewDidLoad()
         setUpView()
         self.hideKeyboard()
-        saveEnter()
+        saveDefaults()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,8 +110,16 @@ final class StartController: UIViewController {
         }
     }
     
-    private func saveEnter() {
+    // MARK: UserDefaults
+    private func saveDefaults() {
         firstTextField.text = defaults.string(forKey: "login")
         secondTextField.text = defaults.string(forKey: "password")
+    }
+    
+    func resetDefaults() {
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
 }

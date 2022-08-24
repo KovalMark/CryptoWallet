@@ -58,6 +58,7 @@ final class WalletController: UIViewController {
     
     @objc private func logOutButtonTapped() {
         let startController = StartController()
+        startController.resetDefaults()
         navigationController?.pushViewController(startController, animated: true)
     }
     
