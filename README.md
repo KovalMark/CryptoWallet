@@ -1,9 +1,24 @@
 # CryptoWallet
-+ Application shows the exchange rate of cryptocurrencies.
 
-### StartController
-+ ![loadScreen](https://github.com/KovalMark/ScreenshotApp/blob/master/CV/StartController.png)
-### WalletController
-+ ![loadScreen](https://github.com/KovalMark/ScreenshotApp/blob/master/CV/WalletController.png)
-### InfoController
-+ ![loadScreen](https://github.com/KovalMark/ScreenshotApp/blob/master/CV/InfoController.png)
++ Привет! Рад представить приложение CryptoWallet, написанное без использования UIStoryBoard.
+
+## Описание приложения:
+
+1) Интерфейс реализован стандартными элементами UIKit.
+2) Для верстки был применен SnapKit.
+3) Информация взята с ( https://data.messari.io/api ).
+4) Приложение поддерживает как вертикальную, так и горизонтальную ориентацию экрана.
+
+### Стартовый экран (StartController)
++ Разработана система проверки логина и пароля. При неуспешной авторизации пользователя будет показано сообщение об ошибке. При успешной авторизации, приложение запомнит пользователя и при повторном открытии, сразу перейдет ко второму экран (WalletController). Хранение данных осуществляется через UserDefaults.
+    + ![loadScreen](https://github.com/KovalMark/ScreenshotApp/blob/master/CV/StartController.png)
+    
+### Экран криптовалют (WalletController)
++ Экран содержит таблицу со списком криптовалют. В ячейке хранится название криптовалюты и ее изменение цены за час.
++ Реализована кнопка "Sorted", позволяющая сортировать криптовалюты от наименьшего изменения цены за час к большему и наоборот.
++ Создана возможность выйти из учетной записи пользователя. При нажатии на "LogOut", будет запущен стартовый экран (StartController) и пользователю будет предложено ввести связку логин/пароль.
+    + ![loadScreen](https://github.com/KovalMark/ScreenshotApp/blob/master/CV/WalletController.png)
+    
+### Экран с подробной информацией по выбранной криптовалюте (InfoController)
++ Экран содержит такую информацию, как название выбранной криптовалюты, ее сокращение, цену относительно доллара и биткоина, изменение цены относительно доллара и биткоина за последний час.
+    + ![loadScreen](https://github.com/KovalMark/ScreenshotApp/blob/master/CV/InfoController.png)
