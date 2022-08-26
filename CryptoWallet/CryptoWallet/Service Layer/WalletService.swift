@@ -7,171 +7,54 @@
 
 import UIKit
 
+enum ServiceConstant {
+    static let host = "data.messari.io"
+    enum Path: String, CaseIterable {
+        case btc = "/api/v1/assets/btc/metrics"
+        case eth = "/api/v1/assets/eth/metrics"
+        case tron = "/api/v1/assets/tron/metrics"
+        case polkadot = "/api/v1/assets/polkadot/metrics"
+        case dogecoin = "/api/v1/assets/dogecoin/metrics"
+        case tether = "/api/v1/assets/tether/metrics"
+        case stellar = "/api/v1/assets/stellar/metrics"
+        case cardano = "/api/v1/assets/cardano/metrics"
+        case xrp = "/api/v1/assets/xrp/metrics"
+        case eos = "/api/v1/assets/eos/metrics"
+    }
+}
+
 final class WalletService {
+    private let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        return session
+    }()
     
-    func addCoin(completion: @escaping (Result<DataWallet, Error>) -> Void) {
+    func addCoin(_ paths: ServiceConstant.Path) async -> DataWallet? {
         
-        guard
-            let urlBtc = URL(string: "https://data.messari.io/api/v1/assets/btc/metrics"),
-            let urlEth = URL(string: "https://data.messari.io/api/v1/assets/eth/metrics"),
-            let urlTron = URL(string: "https://data.messari.io/api/v1/assets/tron/metrics"),
-            let urlPolkadot = URL(string: "https://data.messari.io/api/v1/assets/polkadot/metrics"),
-            let urlDogecoin = URL(string: "https://data.messari.io/api/v1/assets/dogecoin/metrics"),
-            let urlTether = URL(string: "https://data.messari.io/api/v1/assets/tether/metrics"),
-            let urlStellar = URL(string: "https://data.messari.io/api/v1/assets/stellar/metrics"),
-            let urlCardano = URL(string: "https://data.messari.io/api/v1/assets/cardano/metrics"),
-            let urlXrp = URL(string: "https://data.messari.io/api/v1/assets/xrp/metrics"),
-            let urlEos = URL(string: "https://data.messari.io/api/v1/assets/eos/metrics")
-        else { return }
+        let url = configureUrl(paths)
         
-        let taskBtc =  URLSession.shared.dataTask(with: urlBtc) { data, _, error in
-            
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(Response.self, from: data)
-                    completion(.success(result.data))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
+        do {
+            let (data, _) = try await session.data(from: url)
+            let decoder = JSONDecoder()
+            let result = try decoder.decode(Response.self, from: data)
+            return result.data
+        } catch {
+            print(error)
+            return nil
         }
-        taskBtc.resume()
-        
-        let taskEth =  URLSession.shared.dataTask(with: urlEth) { data, _, error in
-            
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(Response.self, from: data)
-                    completion(.success(result.data))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
-        taskEth.resume()
-        
-        let taskTron =  URLSession.shared.dataTask(with: urlTron) { data, _, error in
-            
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(Response.self, from: data)
-                    completion(.success(result.data))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
-        taskTron.resume()
-        
-        let taskPolkadot =  URLSession.shared.dataTask(with: urlPolkadot) { data, _, error in
-            
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(Response.self, from: data)
-                    completion(.success(result.data))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
-        taskPolkadot.resume()
-        
-        let taskDogecoin =  URLSession.shared.dataTask(with: urlDogecoin) { data, _, error in
-            
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(Response.self, from: data)
-                    completion(.success(result.data))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
-        taskDogecoin.resume()
-        
-        let taskTether =  URLSession.shared.dataTask(with: urlTether) { data, _, error in
-            
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(Response.self, from: data)
-                    completion(.success(result.data))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
-        taskTether.resume()
-        
-        let taskStellar =  URLSession.shared.dataTask(with: urlStellar) { data, _, error in
-            
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(Response.self, from: data)
-                    completion(.success(result.data))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
-        taskStellar.resume()
-        
-        let taskCardano =  URLSession.shared.dataTask(with: urlCardano) { data, _, error in
-            
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(Response.self, from: data)
-                    completion(.success(result.data))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
-        taskCardano.resume()
-        
-        let taskXrp =  URLSession.shared.dataTask(with: urlXrp) { data, _, error in
-            
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(Response.self, from: data)
-                    completion(.success(result.data))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
-        taskXrp.resume()
-        
-        let taskEos =  URLSession.shared.dataTask(with: urlEos) { data, _, error in
-            
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data {
-                do {
-                    let result = try JSONDecoder().decode(Response.self, from: data)
-                    completion(.success(result.data))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
-        taskEos.resume()
+    }
+}
+
+// MARK: - Private
+private extension WalletService {
+    
+    func configureUrl(_ path: ServiceConstant.Path) -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = ServiceConstant.host
+        components.path = path.rawValue
+        guard let url = components.url else { return URL(fileURLWithPath: "") }
+        return url
     }
 }

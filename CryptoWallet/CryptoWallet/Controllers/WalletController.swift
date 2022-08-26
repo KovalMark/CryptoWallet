@@ -64,17 +64,26 @@ final class WalletController: UIViewController {
     
     private func configData() {
         data = []
-        service.addCoin { [weak self] result in
-            switch result {
-            case .success(let dataBoy):
-                self?.data.append(dataBoy)
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                    self?.walletTable.reloadData()
-                })
-            case.failure(let error):
-                print(error)
-            }
-        }
+
+		Task {
+			guard
+				let btc = await service.addCoin(.btc),
+				let cardano = await service.addCoin(.cardano),
+				let dogecoin = await service.addCoin(.dogecoin),
+				let eos = await service.addCoin(.eos),
+				let eth = await service.addCoin(.eth),
+				let polkadot = await service.addCoin(.polkadot),
+				let stellar = await service.addCoin(.stellar),
+				let tether = await service.addCoin(.tether),
+				let tron = await service.addCoin(.tron),
+				let xrp = await service.addCoin(.xrp)
+			else
+			{ return }
+			[btc, cardano, dogecoin, eos, eth, polkadot, stellar, tether, tron, xrp].forEach { data.append($0) }
+			DispatchQueue.main.async {
+				self.walletTable.reloadData()
+			}
+		}
     }
     
     @objc private func sortedButtonTapped() {
@@ -86,6 +95,16 @@ final class WalletController: UIViewController {
             pointSorted = pointSorted + 1
         }
         walletTable.reloadData()
+    }
+    
+    func alertVC() {
+        let alertVC = UIAlertController(
+                    title: "Error",
+                    message: "Error connecting to the server",
+                    preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertVC.addAction(action)
+                self.present(alertVC, animated: true, completion: nil)
     }
 }
 
